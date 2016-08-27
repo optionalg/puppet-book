@@ -38,6 +38,7 @@ For simplicity during learning, we will use Type 2. Puppet Setup Type 1 and Vagr
     - Edit the Vagrant file to update as follows: config.vm.box = "ubuntu/trusty32"
     - vagrant up
     - vagrant ssh
+    
       ```
       $ mkdir my-vagrant-home ; cd my-vagrant-home
       $ vagrant init
