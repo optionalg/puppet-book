@@ -1,7 +1,7 @@
 # Introduction to Puppet
 
 
-## How Puppet can help to manage your infrastructure 
+## How Puppet can manage your infrastructure 
 
 - Maintain consistency of system configuration over a period of time.
 - Spin-up servers with pre-defined configuration without the concern of human error.
