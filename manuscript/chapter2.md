@@ -45,4 +45,43 @@ For simplicity during learning, we will use Type 2. Puppet Setup Type 1 and Vagr
       $ vim VAGRANT
       $ vagrant up
       $ vagrant ssh
-      ```
+    ```
+4. Additional Setup tasks:
+    - Confirm that Puppet is present and installed.
+    - Execute ```puppet -version```
+    - Check the puppet directories by doing a  ```ls -ltr /etc/puppet```
+    - Test whether the puppet installation is fine. Open the file ```/etc/puppet/manifests/site.pp``` and write to it.
+    ```
+    $ sudo vim /etc/puppet/manifests/site.pp
+    
+    node default{
+        file { '/tmp/file1':
+          ensure => file,
+        }
+       notify { "We are creating a file using puppet ;) ": }
+    }
+    ```
+5. Execute ```puppet apply /etc/puppet/manifests/site.pp``` . Check if the file /tmp/file1 has be created successfully! If yes, Congratulations! Your Puppet installation has been tested :)
+6. Update the code to add another file, but this time we won’t apply the changes. We’ll test it first.
+    ```
+    node default{
+
+        file { '/tmp/file1':
+
+          ensure => file,
+
+        }
+
+        notify { "System is up": }
+
+        file { '/tmp/file2':
+
+          ensure => file,
+
+        }
+
+ }
+ ```
+7. Execute ```puppet apply –noop /etc/puppet/manifests/site.pp```.
+    Even though the code mandates creation of a second file, it doesn't get created because of the `-noop` flag. Instead the output prints to console what would happen if the manifest was **actually** executed.
+8. Now, execute ```puppet apply /etc/puppet/manifests/site.pp``` to see the file `/tmp/file1` actually getting created.
